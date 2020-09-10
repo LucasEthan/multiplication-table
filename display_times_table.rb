@@ -7,12 +7,9 @@ begin
     puts "Multiplication table"
     print "Enter dimensionality: "
     dim = Integer(gets)
-    if dim.negative?
-      puts "You have entered a invalid dimensionality"
-      elsif dim.zero?
-        puts "You have entered a invalid dimensionality"
-      end
+
     dim = Multiplication_table.new(dim)
+    dim.controls_dimensionality
     dim.calculate_number
 
   print "Do you want to quit [y/n]?: "
