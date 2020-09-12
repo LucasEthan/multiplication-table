@@ -1,22 +1,22 @@
 #!/usr/bin/env ruby
 
-require_relative "class_multiplication_table"
-begin
+require_relative "multiplication_table"
+
+
   loop do
-    dim = Multiplication_table.new(dim) 
     puts "Multiplication table"
     print "Enter dimensionality: "
     dim = Integer(gets)
+    begin
+    multiplication_table = MultiplicationTable.new(dim)
+    multiplication_table.print_table
+    rescue DimensionalityError => e
+      puts e.message
+    end
 
-    dim = Multiplication_table.new(dim)
-    dim.controls_dimensionality
-    dim.calculate_number
-
-  print "Do you want to quit [y/n]?: "
-  choice = gets.chomp.upcase
+    print "Do you want to quit [y/n]?: "
+    choice = gets.chomp.upcase
 
   break if choice == "Y"
 end
-rescue ArgumentError => e
-  puts "You have entered a invalid dimensionality"
-end
+
